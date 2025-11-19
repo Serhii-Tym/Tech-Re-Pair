@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Desktop & Laptop Repair - Phone Advice</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+
+  <script>
+    (function() {
+      const savedTheme = localStorage.getItem('color-theme');
+      // Use 'dark-mode' class to represent the LIGHT theme state, based on the original structure.
+      const CLASS_NAME = 'dark-mode'; 
+
+      if (savedTheme === 'light') {
+        document.body.classList.add(CLASS_NAME);
+      } else if (savedTheme === 'dark') {
+         // Dark is the CSS default, ensure light class is absent
+         document.body.classList.remove(CLASS_NAME);
+      } else {
+        // Fallback to system preference if no localStorage value
+        if (window.matchMedia('(prefers-color-scheme: light)').matches) {
+           document.body.classList.add(CLASS_NAME);
+        }
+      }
+    })();
+  </script>
+</head>
+<body>
+  <div class="wrap">
+
+    <header>
+      <div class="brand">
+        <a href="index.html">
+          <img src="Images/Logo.png" alt="Tech Re/Pair AI Logo" class="logo-image" style="height: 32px; width: auto; margin-right: 8px;">
+          Tech Re/Pair
+        </a>
+      </div>
+      <nav aria-label="Main navigation">
+        <a href="index.html">Home</a>
+        <a href="index.html#services">Services</a>
+        <a href="phone-repair.html">Phones</a>
+        <a href="tablet-repair.html">Tablets</a>
+        <a href="desktop-laptop-repair.html">Desktops/Laptops</a>
+        <a href="contact.html">Contact</a>
+        <button id="themeToggle" aria-label="Switch Theme"><img id="themeIcon" src="Images/LightBtn.png" alt="Theme Icon"></button>
+      </nav>
+    </header>
+
+    <section class="section">
+        <div class="section-content">
+            <h1>Expert Desktop & Laptop Repair Services</h1>
+            <p class="text-secondary">From slow performance to component failure, we diagnose and fix PC issues fast and affordably.</p>
+        </div>
+
+        <div class="wrap" style="padding: 0 1rem;">
+            <table class="pricing-table">
+                <thead>
+                    <tr>
+                        <th>Service</th>
+                        <th>Description</th>
+                        <th>Estimated Time</th>
+                        <th>Price Range</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td data-label="Service">Diagnostics & Tune-Up</td>
+                        <td data-label="Description" class="description">Full system check, virus removal, and OS optimization.</td>
+                        <td data-label="Estimated Time">1 Day</td>
+                        <td data-label="Price Range">£119 - £179</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Service">SSD/HDD Upgrade & Clone</td>
+                        <td data-label="Description" class="description">Replacing old drives with faster SSDs without data loss.</td>
+                        <td data-label="Estimated Time">1 Day</td>
+                        <td data-label="Price Range">£79 + Part Cost</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Service">Screen/Display Replacement</td>
+                        <td data-label="Description" class="description">New display installation for damaged laptop screens.</td>
+                        <td data-label="Estimated Time">1-2 Days</td>
+                        <td data-label="Price Range">£149 - £499</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Service">Custom Build & Repair</td>
+                        <td data-label="Description" class="description">Component installation and troubleshooting for custom desktop PCs.</td>
+                        <td data-label="Estimated Time">Varies</td>
+                        <td data-label="Price Range">Starts at £99</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="section-content" id="advice">
+            <h2 style="margin-top: 3rem;">AI Desktop/Laptop Repair Guru</h2>
+            <p class="text-secondary">Ask a specific question about your PC's issue to get immediate advice.</p>
+
+            <div class="chat-container">
+    <div class="chat-header">
+        <p>AI Repair Guru</p>
+    </div>
+    <div class="messages-container">
+        <div class="message-bubble message-ai">
+            Hello! I'm the AI Repair Guru. Tell me about your device issue (e.g., "cracked screen" or "laptop slow") for instant advice.
+            <span class="message-time">10:00 AM</span>
+        </div>
+    </div>
+    <form class="chat-input-form">
+        <input type="text" placeholder="Ask the Guru about your repair issue..." required>
+        <button type="submit" class="btn">Send</button>
+    </form>
+</div>
+        </div>
+        
+        <div class="faq-list mt-8 max-w-lg mx-auto">
+            <h3 class="text-2xl font-semibold mb-4 text-left">Common PC Issues FAQ</h3>
+            <div class="faq-item" data-open="false">
+                <div class="q">Q: What is the "Blue Screen of Death" (BSOD)? <span>+</span></div>
+                <div class="a">A: The BSOD usually indicates a critical system crash due to faulty drivers, hardware failure (RAM, disk), or an issue with the Windows operating system itself.</div>
+            </div>
+            <div class="faq-item" data-open="false">
+                <div class="q">Q: How do I check my laptop's fan health? <span>+</span></div>
+                <div class="a">A: If the fan sounds louder than usual, or the laptop feels hot, use system monitoring software (like HWMonitor) to check your CPU/GPU temperatures. Dusting is often the solution.</div>
+            </div>
+            <div class="faq-item" data-open="false">
+                <div class="q">Q: My PC turns on but the screen is black. <span>+</span></div>
+                <div class="a">A: This is a "No POST" issue. Check your monitor cable, ensure your graphics card is seated correctly, and try removing one stick of RAM at a time.</div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+      <div><strong>Tech Re/Pair</strong> © 2025</div>
+      <nav>
+        <a href="#services">Services</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </footer>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

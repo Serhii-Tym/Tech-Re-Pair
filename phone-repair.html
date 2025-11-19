@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Phone Repair - Phone Advice</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+
+  <script>
+    (function() {
+      const savedTheme = localStorage.getItem('color-theme');
+      // Use 'dark-mode' class to represent the LIGHT theme state, based on the original structure.
+      const CLASS_NAME = 'dark-mode'; 
+
+      if (savedTheme === 'light') {
+        document.body.classList.add(CLASS_NAME);
+      } else if (savedTheme === 'dark') {
+         // Dark is the CSS default, ensure light class is absent
+         document.body.classList.remove(CLASS_NAME);
+      } else {
+        // Fallback to system preference if no localStorage value
+        if (window.matchMedia('(prefers-color-scheme: light)').matches) {
+           document.body.classList.add(CLASS_NAME);
+        }
+      }
+    })();
+  </script>
+</head>
+<body>
+  <div class="wrap">
+
+    <header>
+      <div class="brand">
+        <a href="index.html">
+          <img src="Images/Logo.png" alt="Tech Re/Pair AI Logo" class="logo-image" style="height: 32px; width: auto; margin-right: 8px;">
+          Tech Re/Pair
+        </a>
+      </div>
+      <nav aria-label="Main navigation">
+        <a href="index.html">Home</a>
+        <a href="index.html#services">Services</a>
+        <a href="phone-repair.html">Phones</a>
+        <a href="tablet-repair.html">Tablets</a>
+        <a href="desktop-laptop-repair.html">Desktops/Laptops</a>
+        <a href="contact.html">Contact</a>
+        <button id="themeToggle" aria-label="Switch Theme"><img id="themeIcon" src="Images/LightBtn.png" alt="Theme Icon"></button>
+      </nav>
+    </header>
+
+    <section class="section">
+        <div class="section-content">
+            <h1>Expert Phone Repair Services</h1>
+            <p class="text-secondary">Get fast, reliable service for cracked screens, battery issues, and water damage. All major brands supported.</p>
+        </div>
+
+        <div class="wrap" style="padding: 0 1rem;">
+            <table class="pricing-table">
+                <thead>
+                    <tr>
+                        <th>Service</th>
+                        <th>Description</th>
+                        <th>Estimated Time</th>
+                        <th>Price Range</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td data-label="Service">Screen Replacement</td>
+                        <td data-label="Description" class="description">High-quality display and digitizer replacement.</td>
+                        <td data-label="Estimated Time">1-2 Hours</td>
+                        <td data-label="Price Range">£99 - £299</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Service">Battery Replacement</td>
+                        <td data-label="Description" class="description">New certified battery installed, restoring peak performance.</td>
+                        <td data-label="Estimated Time">1 Hour</td>
+                        <td data-label="Price Range">£69 - £129</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Service">Water Damage Cleanup</td>
+                        <td data-label="Description" class="description">Component cleaning and diagnostic to save your device.</td>
+                        <td data-label="Estimated Time">24-48 Hours</td>
+                        <td data-label="Price Range">£149 - £399</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Service">Charging Port Repair</td>
+                        <td data-label="Description" class="description">Replacement of faulty or damaged charging connector.</td>
+                        <td data-label="Estimated Time">1 Hour</td>
+                        <td data-label="Price Range">£79 - £139</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="section-content" id="advice">
+            <h2 style="margin-top: 3rem;">AI Phone Repair Guru</h2>
+            <p class="text-secondary">Ask a specific question about your phone's issue to get immediate advice.</p>
+
+            <div class="chat-container">
+    <div class="chat-header">
+        <p>AI Repair Guru</p>
+    </div>
+    <div class="messages-container">
+        <div class="message-bubble message-ai">
+            Hello! I'm the AI Repair Guru. Tell me about your device issue (e.g., "cracked screen" or "laptop slow") for instant advice.
+            <span class="message-time">10:00 AM</span>
+        </div>
+    </div>
+    <form class="chat-input-form">
+        <input type="text" placeholder="Ask the Guru about your repair issue..." required>
+        <button type="submit" class="btn">Send</button>
+    </form>
+</div>
+        </div>
+        
+        <div class="faq-list mt-8 max-w-lg mx-auto">
+            <h3 class="text-2xl font-semibold mb-4 text-left">Common Phone Issues FAQ</h3>
+            <div class="faq-item" data-open="false">
+                <div class="q">Q: My phone is stuck in a boot loop. <span>+</span></div>
+                <div class="a">A: This is usually a software issue. Try booting into recovery mode and clearing the cache or performing a factory reset.</div>
+            </div>
+            <div class="faq-item" data-open="false">
+                <div class="q">Q: How much does a battery replacement cost? <span>+</span></div>
+                <div class="a">A: Battery replacement costs vary greatly by model and service center. Always check your manufacturer's certified repair partners first.</div>
+            </div>
+            <div class="faq-item" data-open="false">
+                <div class="q">Q: Why is my camera blurry? <span>+</span></div>
+                <div class="a">A: Check if the lens is dirty or scratched. If not, the camera module may be physically damaged and require replacement.</div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+      <div><strong>Tech Re/Pair</strong> © 2025</div>
+      <nav>
+        <a href="#services">Services</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </footer>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

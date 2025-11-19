@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Tech Re/Pair - Form, Location & Hours</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+
+  <script>
+    (function() {
+      const savedTheme = localStorage.getItem('color-theme');
+      const CLASS_NAME = 'dark-mode'; 
+
+      if (savedTheme === 'light') {
+        document.body.classList.add(CLASS_NAME);
+      } else if (savedTheme === 'dark') {
+         document.body.classList.remove(CLASS_NAME);
+      } else {
+        if (window.matchMedia('(prefers-color-scheme: light)').matches) {
+           document.body.classList.add(CLASS_NAME);
+        }
+      }
+    })();
+  </script>
+
+</head>
+<body>
+  <div class="wrap">
+
+    <header>
+      <div class="brand">
+        <a href="index.html">
+          <img src="Images/Logo.png" alt="Tech Re/Pair AI Logo" class="logo-image" style="height: 32px; width: auto; margin-right: 8px;">
+          Tech Re/Pair
+        </a>
+      </div>
+      <nav aria-label="Main navigation">
+        <a href="index.html">Home</a>
+        <a href="index.html#services">Services</a>
+        <a href="phone-repair.html">Phones</a>
+        <a href="tablet-repair.html">Tablets</a>
+        <a href="desktop-laptop-repair.html">Desktops/Laptops</a>
+        <a href="contact.html" class="active">Contact</a>
+        <button id="themeToggle" aria-label="Switch Theme"><img id="themeIcon" src="Images/LightBtn.png" alt="Theme Icon"></button>
+      </nav>
+    </header>
+
+    <section class="section">
+        <div class="section-content">
+            <h1 class="text-3xl font-bold mb-4 text-center">Contact Us</h1>
+            <p class="text-secondary text-center lead mb-8">Have a question or need a personalized quote? Send us a message, and we'll respond within 24 hours.</p>
+        </div>
+
+        <div class="contact-form-container">
+            <form action="#" method="POST">
+                
+                <label for="name">Your Name</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="email">Your Email</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="device">Device Type</label>
+                <select id="device" name="device" required>
+                    <option value="" disabled selected>Select a device</option>
+                    <option value="phone">Phone</option>
+                    <option value="tablet">Tablet</option>
+                    <option value="laptop">Laptop</option>
+                    <option value="desktop">Desktop</option>
+                    <option value="other">Other</option>
+                </select>
+
+                <label for="issue">Describe Your Issue</label>
+                <textarea id="issue" name="issue" rows="5" required></textarea>
+
+                <button type="submit" class="btn mt-6 w-full py-3 text-lg">Send Inquiry</button>
+            </form>
+        </div>
+    </section>
+
+    <hr> 
+
+    <section class="section">
+        <div class="section-content">
+            <h1 class="text-3xl font-bold mb-4 text-center">Visit Our Location</h1>
+            <p class="text-secondary text-center lead mb-8">See our service center location and our daily operating schedule below.</p>
+
+            <div class="location-grid">
+                
+                <div class="map-container">
+                    <h2 class="sr-only">Our Location Map</h2>
+                    <iframe 
+                        class="map-embed"
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2482.9099951680197!2d-0.1245059842261642!3d51.51475757963665!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487604d55b357f49%3A0xc476594c965c404!2sTrafalgar%20Square!5e0!3m2!1sen!2suk!4v1638201600000!5m2!1sen!2suk" 
+                        allowfullscreen="" 
+                        loading="lazy"
+                        title="Google Maps Location">
+                    </iframe>
+                </div>
+
+                <div class="hours-table-container">
+                    <h2 class="text-2xl font-bold mt-2 mb-4 text-center">Operating Schedule</h2>
+                    <table class="hours-table">
+                        <thead>
+                            <tr>
+                                <th>Day</th>
+                                <th>Time</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Monday</td><td>9:00 AM – 6:00 PM</td></tr>
+                            <tr><td>Tuesday</td><td>9:00 AM – 6:00 PM</td></tr>
+                            <tr><td>Wednesday</td><td>9:00 AM – 6:00 PM</td></tr>
+                            <tr><td>Thursday</td><td>9:00 AM – 6:00 PM</td></tr>
+                            <tr><td>Friday</td><td>9:00 AM – 6:00 PM</td></tr>
+                            <tr><td>Saturday</td><td>10:00 AM – 4:00 PM</td></tr>
+                            <tr><td>Sunday</td><td>Closed</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <footer>
+      <div><strong>Tech Re/Pair</strong> © 2025</div>
+      <nav>
+        <a href="#services">Services</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </footer>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,766 @@
+:root {
+    /* DARK MODE (DEFAULT) */
+    --bg-dark: #121522;
+    --bg-light: #202436; /* Використовується для карток */
+    --text-primary: #f0f0f0;
+    --text-secondary: #a0a4b5;
+    --accent: #00bcd4;
+    --accent-hover: #0097a7;
+    --border-color: #33394a;
+    --input-bg: #1e2233;
+    --input-border: #444c69;
+    --shadow-color: rgba(0, 0, 0, 0.25);
+    --ai-user-bubble: var(--accent);
+    --ai-guru-bubble: var(--bg-light);
+    --accent-rgb: 0, 188, 212;
+
+    /* МЕПІНГ ЗМІННИХ */
+    --bg: var(--bg-dark);
+    --card: var(--bg-light);
+    --muted: var(--text-secondary);
+    --dark: var(--text-primary);
+    --input-color: var(--input-bg);
+    --input-border-color: var(--input-border);
+}
+
+body.dark-mode {
+    /* LIGHT MODE */
+    --bg-light-mode: #f6f8fb;
+    --card-light-mode: #ffffff;
+    --text-primary-light-mode: #33394a;
+    --text-secondary-light-mode: #6e7896;
+    --border-color-light-mode: #e0e0e0;
+    --input-bg-light-mode: #f0f0f0;
+    --input-border-light-mode: #ccc;
+    --shadow-color-light-mode: rgba(0, 0, 0, 0.1);
+    --ai-guru-bubble-light-mode: #e0e0e0;
+
+    /* ПЕРЕПРИЗНАЧЕННЯ ЗМІННИХ ДЛЯ СВІТЛОГО РЕЖИМУ */
+    --bg: var(--bg-light-mode);
+    --card: var(--card-light-mode);
+    --text-primary: var(--text-primary-light-mode);
+    --text-secondary: var(--text-secondary-light-mode);
+    --border-color: var(--border-color-light-mode);
+    --input-color: var(--input-bg-light-mode);
+    --input-border-color: var(--input-border-light-mode);
+    --shadow-color: var(--shadow-color-light-mode);
+    --ai-guru-bubble: var(--ai-guru-bubble-light-mode);
+
+    /* Як було надано користувачем */
+    --muted: #222222; 
+    --dark: var(--text-primary); 
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: "Inter", sans-serif;
+    background: var(--bg);
+    color: var(--dark);
+    transition: background 0.3s, color 0.3s;
+}
+
+h1, h2, h3 {
+    color: var(--dark);
+    font-weight: 700;
+    margin-top: 0;
+}
+
+p {
+    line-height: 1.6;
+}
+
+a {
+    color: var(--accent);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+a:hover {
+    color: var(--accent-hover);
+}
+
+.wrap {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+.section {
+    padding: 3rem 0;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.section-content {
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.btn {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    border-radius: 6px;
+    background: var(--accent);
+    color: var(--bg-dark);
+    text-decoration: none;
+    font-weight: 700;
+    border: none;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.1s;
+}
+
+.btn:hover {
+    background: var(--accent-hover);
+    transform: translateY(-1px);
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--border-color);
+    background: var(--bg);
+    z-index: 10;
+    position: sticky;
+    top: 0;
+}
+
+.brand a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: var(--dark);
+    font-weight: 800;
+    font-size: 1.5rem;
+    transition: color 0.3s;
+}
+
+.brand a:hover {
+    color: var(--accent);
+}
+
+.logo-icon {
+    fill: var(--accent);
+    margin-right: 0.5rem;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+}
+
+nav a, footer nav a {
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+nav a {
+    margin-left: 1.5rem;
+    font-weight: 600;
+}
+
+nav a:hover, nav a.active {
+    color: var(--dark);
+}
+
+#themeToggle {
+    margin-left: 1.5rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 50%;
+    transition: background 0.3s;
+}
+
+#themeToggle:hover {
+    background: var(--border-color);
+}
+
+#themeIcon {
+    width: 24px;
+    height: 24px;
+    /* Усунення інверсії кольору, якщо вона була потрібна для старих стилів */
+    filter: none;
+}
+
+/* Якщо ви використовуєте світлі іконки на темному фоні, а темні на світлому, 
+   цей стиль інвертує світлу іконку у світлому режимі.
+   Якщо ви використовуєте тільки одну іконку (наприклад, місяць), цей код може потребувати коригування. 
+   Використовуємо filter: invert() тільки для темного режиму, якщо іконка світла. 
+*/
+body:not(.dark-mode) #themeIcon {
+     filter: invert(1);
+}
+
+body.dark-mode #themeIcon {
+    /* Для світлого режиму, де клас body.dark-mode є, іконка повинна бути темною */
+    filter: invert(0); 
+}
+
+
+.hero {
+    padding: 5rem 0 3rem;
+}
+
+.hero-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: left;
+    gap: 3rem;
+}
+
+.hero-text {
+    flex: 1;
+}
+
+.hero-text h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    line-height: 1.1;
+}
+
+.hero-text p {
+    font-size: 1.25rem;
+    color: var(--muted);
+    margin-bottom: 2rem;
+}
+
+.hero-illustration {
+    flex: 1;
+    max-width: 450px;
+    height: auto;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px var(--shadow-color);
+}
+
+.hero-illustration img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.service-card {
+    background: var(--card);
+    padding: 2rem;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 4px 15px var(--shadow-color);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px var(--shadow-color);
+}
+
+.service-card .icon {
+    font-size: 3rem;
+    color: var(--accent);
+    margin-bottom: 1rem;
+}
+
+.service-card h4 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.service-card p {
+    color: var(--muted);
+    font-size: 0.95rem;
+}
+
+.service-card a {
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 600;
+    display: inline-block;
+    margin-top: 1rem;
+}
+
+.testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.testimonial-card {
+    background: var(--card);
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px var(--shadow-color);
+    text-align: left;
+}
+
+.testimonial-card .rating {
+    color: gold;
+    font-size: 1.25rem;
+    margin-bottom: 0.75rem;
+}
+
+.testimonial-card p {
+    font-style: italic;
+    color: var(--muted);
+    margin: 0;
+}
+
+.faq-list {
+    max-width: 700px;
+    margin: 2rem auto 0;
+    text-align: left;
+}
+
+.faq-item {
+    background: var(--card);
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    overflow: hidden;
+    transition: box-shadow 0.3s;
+    box-shadow: 0 2px 5px var(--shadow-color);
+}
+
+.faq-item:hover {
+    box-shadow: 0 4px 12px var(--shadow-color);
+}
+
+.faq-item .q {
+    padding: 1rem 1.5rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--dark);
+}
+
+.faq-item .q span {
+    font-size: 1.5rem;
+    transform: rotate(0deg);
+    transition: transform 0.3s;
+}
+
+.faq-item[data-open="true"] .q {
+    border-bottom: 1px solid var(--border-color);
+}
+
+.faq-item[data-open="true"] .q span {
+    transform: rotate(45deg);
+}
+
+.faq-item .a {
+    max-height: 0;
+    padding: 0 1.5rem;
+    transition: max-height 0.3s ease-out, padding 0.3s ease-out;
+    overflow: hidden;
+    color: var(--muted);
+    line-height: 1.5;
+}
+
+.faq-item[data-open="true"] .a {
+    max-height: 200px;
+    padding: 0.75rem 1.5rem 1.5rem;
+}
+
+.contact-form-container {
+    background: var(--card);
+    padding: 2.5rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px var(--shadow-color);
+    margin: 2rem auto 3rem;
+    max-width: 600px;
+    text-align: left;
+}
+
+.contact-form-container form label {
+    display: block;
+    margin-top: 1rem;
+    margin-bottom: 0.3rem;
+    font-weight: 600;
+    color: var(--dark);
+}
+
+.contact-form-container form input[type="text"],
+.contact-form-container form input[type="email"],
+.contact-form-container form select,
+.contact-form-container form textarea,
+.chat-input-form input {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid var(--input-border-color);
+    border-radius: 6px;
+    background: var(--input-color);
+    color: var(--dark);
+    font-size: 1rem;
+    transition: border-color 0.3s, background 0.3s;
+}
+
+.contact-form-container form input:focus,
+.contact-form-container form select:focus,
+.contact-form-container form textarea:focus,
+.chat-input-form input:focus {
+    border-color: var(--accent);
+    outline: none;
+}
+
+.contact-form-container form textarea {
+    resize: vertical;
+}
+
+.contact-form-container select {
+    appearance: none;
+    background-image: var(--select-arrow-dark, url("data:image/svg+xml;charset=UTF8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath fill='%23a0a4b5' d='M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 6.757 7.586 5.343 9l4.95 4.95z'/%3E%3C/svg%3E"));
+    background-repeat: no-repeat;
+    background-position: right 0.7em top 50%;
+    background-size: 0.65em auto;
+}
+
+body.dark-mode .contact-form-container select {
+    background-image: url("data:image/svg+xml;charset=UTF8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath fill='%236e7896' d='M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 6.757 7.586 5.343 9l4.95 4.95z'/%3E%3C/svg%3E");
+}
+
+.pricing-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 10px;
+    margin-top: 2rem;
+    text-align: left;
+}
+
+.pricing-table th, .pricing-table td {
+    padding: 1.25rem 1rem;
+    vertical-align: middle;
+}
+
+.pricing-table thead th {
+    font-weight: 700;
+    color: var(--accent);
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    border-bottom: 2px solid var(--border-color);
+}
+
+.pricing-table tbody tr {
+    background: var(--card);
+    transition: box-shadow 0.3s, transform 0.3s;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px var(--shadow-color);
+}
+
+.pricing-table tbody tr:hover {
+    box-shadow: 0 6px 20px var(--shadow-color);
+    transform: translateY(-2px);
+}
+
+.pricing-table tbody td:first-child {
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+}
+
+.pricing-table tbody td:last-child {
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+    font-weight: 700;
+    color: var(--accent);
+}
+
+.pricing-table .description {
+    color: var(--muted);
+    font-size: 0.9rem;
+}
+
+.chat-container {
+    max-width: 500px;
+    margin: 2rem auto;
+    border-radius: 12px;
+    overflow: hidden;
+    background: var(--card);
+    box-shadow: 0 4px 15px var(--shadow-color);
+    display: flex;
+    flex-direction: column;
+}
+
+.messages-container {
+    padding: 1rem;
+    height: 300px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.message-bubble {
+    padding: 0.75rem 1rem;
+    border-radius: 18px;
+    max-width: 80%;
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+    position: relative;
+}
+
+.message-time {
+    display: block;
+    font-size: 0.7rem;
+    color: rgba(255, 255, 255, 0.5); /* Білий для темного фону */
+    margin-top: 5px;
+}
+
+body.dark-mode .message-time {
+    color: rgba(0, 0, 0, 0.5); /* Чорний для світлого фону */
+}
+
+.message-user {
+    align-self: flex-end;
+    background: var(--ai-user-bubble);
+    color: var(--bg-dark); /* Чорний текст на акцентному фоні */
+    border-bottom-right-radius: 2px;
+}
+
+.message-ai {
+    align-self: flex-start;
+    background: var(--ai-guru-bubble);
+    color: var(--dark); /* Основний текст на фоні картки */
+    border-bottom-left-radius: 2px;
+}
+
+.chat-input-form {
+    padding: 1rem;
+    border-top: 1px solid var(--border-color);
+    display: flex;
+    gap: 0.5rem;
+    background: var(--card);
+}
+
+.chat-input-form input {
+    flex-grow: 1;
+}
+
+.chat-input-form button {
+    /* Додаємо стилі для кнопки в чаті, оскільки у наданому коді їх не було */
+    padding: 0.75rem 1rem;
+    width: 80px; 
+    /* Використовуємо стилі .btn для кнопки відправки */
+}
+
+footer {
+    padding: 1.5rem 0;
+    border-top: 1px solid var(--border-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.9rem;
+    color: var(--muted);
+    margin-top: 2rem;
+}
+
+footer nav a {
+    margin-left: 1rem;
+}
+
+/* --- CONTACT LOCATION LAYOUT FIX --- */
+.location-grid {
+    display: flex;
+    gap: 2rem;
+    align-items: stretch; /* ГАРАНТУЄ РІВНУ ВИСОТУ БЛОКІВ */
+    max-width: 1100px;
+    margin: 0 auto;
+    flex-wrap: wrap;
+}
+
+.map-container {
+    flex: 6;
+    min-height: 450px;
+    margin: 0;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.hours-table-container {
+    flex: 5;
+    min-height: 450px;
+    padding: 1rem;
+    background: var(--card); /* Використовуємо --card, як у .location-grid */
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    /* Додаємо flex для вирівнювання таблиці знизу, як було в оригінальному фіксі */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; 
+}
+
+.map-embed {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+.hours-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 1.1rem;
+    /* Додаємо margin-top: auto для вирівнювання, якщо потрібно */
+    margin-top: auto; 
+}
+
+.hours-table th, .hours-table td {
+    padding: 0.75rem;
+    border-bottom: 1px solid var(--border-color);
+    text-align: left;
+}
+
+.hours-table th {
+    background-color: var(--accent);
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.hours-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.hours-table tbody tr:hover {
+    background-color: rgba(var(--accent-rgb), 0.1);
+}
+
+/* ================================================= */
+/* MOBILE / RESPONSIVE DESIGN */
+/* ================================================= */
+
+@media (max-width: 900px) {
+    /* Адаптуємо секцію FAQ для менших екранів */
+    .faq-item[data-open="true"] .a {
+        max-height: 300px; /* збільшуємо, бо контенту може бути більше */
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-content {
+        flex-direction: column-reverse;
+        text-align: center;
+    }
+    .hero-text, .hero-illustration {
+        max-width: 100%;
+        text-align: center;
+    }
+    .hero-text h1 {
+        font-size: 2.5rem;
+    }
+    .hero-illustration {
+        margin-bottom: 2rem;
+    }
+    /* PRICING TABLE RESPONSIVE STYLES */
+    .pricing-table {
+        border-spacing: 0;
+        display: block;
+        width: 100%;
+    }
+    .pricing-table thead {
+        display: none;
+    }
+    .pricing-table tr {
+        margin-bottom: 15px;
+        display: block;
+        border-radius: 8px;
+        box-shadow: 0 2px 5px var(--shadow-color);
+        border: 1px solid var(--border-color);
+    }
+    .pricing-table td {
+        display: block;
+        text-align: right;
+        border-bottom: 1px solid var(--border-color);
+        padding: 0.75rem 1rem;
+    }
+    .pricing-table td::before {
+        content: attr(data-label);
+        float: left;
+        font-weight: 700;
+        color: var(--accent);
+    }
+    .pricing-table td:last-child {
+        border-bottom: none;
+    }
+    .pricing-table tbody tr:hover {
+        transform: none;
+    }
+    .pricing-table tbody td:first-child,
+    .pricing-table tbody td:last-child {
+        border-radius: 0;
+    }
+    /* HEADER RESPONSIVE STYLES */
+    header {
+        flex-direction: column;
+        text-align: center;
+    }
+    header nav {
+        margin-top: 1rem;
+        display: flex;
+        flex-wrap: wrap; 
+        justify-content: center;
+    }
+    header nav a {
+        margin: 0 0.5rem;
+    }
+    #themeToggle {
+        margin: 0.5rem 0 0;
+    }
+    /* FOOTER RESPONSIVE STYLES */
+    footer {
+        flex-direction: column;
+        text-align: center;
+    }
+    footer nav {
+        margin-top: 1rem;
+    }
+    footer nav a {
+        margin: 0 0.5rem;
+    }
+}
+
+@media (max-width: 600px) {
+     .section {
+        padding: 2rem 0;
+    }
+    .hero-text h1 {
+        font-size: 2rem;
+    }
+    .hero-text p {
+        font-size: 1.1rem;
+    }
+    /* CONTACT/LOCATION GRID STACKING */
+    .location-grid {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+    .map-container, .hours-table-container {
+        flex-basis: 100%;
+        min-height: 300px;
+    }
+
+    /* CHAT INPUT FOR SMALL PHONES */
+    .chat-input-form {
+        padding: 0.5rem;
+    }
+
+    .chat-input-form button {
+        width: 60px; 
+        padding: 0.6rem;
+        font-size: 0.8rem;
+    }
+}

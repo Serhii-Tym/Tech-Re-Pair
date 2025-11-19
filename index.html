@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tech Re/Pair - Homepage</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  
+  <script>
+    (function() {
+      const savedTheme = localStorage.getItem('color-theme');
+      // Use 'dark-mode' class to represent the LIGHT theme state, based on the original structure.
+      const CLASS_NAME = 'dark-mode'; 
+
+      if (savedTheme === 'light') {
+        document.body.classList.add(CLASS_NAME);
+      } else if (savedTheme === 'dark') {
+         // Dark is the CSS default, ensure light class is absent
+         document.body.classList.remove(CLASS_NAME);
+      } else {
+        // Fallback to system preference if no localStorage value
+        if (window.matchMedia('(prefers-color-scheme: light)').matches) {
+           document.body.classList.add(CLASS_NAME);
+        }
+      }
+    })();
+  </script>
+</head>
+<body>
+  <div class="wrap">
+
+    <header>
+      <div class="brand">
+        <a href="index.html">
+          <img src="Images/Logo.png" alt="Tech Re/Pair AI Logo" class="logo-image" style="height: 32px; width: auto; margin-right: 8px;">
+          Tech Re/Pair
+        </a>
+      </div>
+      <nav aria-label="Main navigation">
+        <a href="index.html">Home</a>
+        <a href="index.html#services">Services</a>
+        <a href="phone-repair.html">Phones</a>
+        <a href="tablet-repair.html">Tablets</a>
+        <a href="desktop-laptop-repair.html">Desktops/Laptops</a>
+        <a href="contact.html">Contact</a>
+        <button id="themeToggle" aria-label="Switch Theme"><img id="themeIcon" src="Images/LightBtn.png" alt="Theme Icon"></button>
+      </nav>
+    </header>
+
+    <section class="section hero">
+      <div class="hero-content">
+        <div class="hero-text">
+          <h1>Your AI Guru for Device Repair & Diagnostics.</h1>
+          <p>Get expert advice, instant repair quotes, and book service for all your broken electronics, 24/7.</p>
+          <a href="#advice" class="btn" id="ctaAdvice">Get AI Advice Now</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="services">
+      <div class="section-content">
+        <h2>Expert Repair Services</h2>
+        <p class="text-secondary">We fix everything from cracked screens to complex motherboard issues.</p>
+        
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="icon">📱</div>
+                <h4>Phone Repair</h4>
+                <p>Screen replacement, battery service, camera, and water damage repair for all major brands.</p>
+                <a href="phone-repair.html">View Services &rarr;</a>
+            </div>
+            <div class="service-card">
+                <div class="icon">🖥️</div>
+                <h4>Desktop/Laptop Repair</h4>
+                <p>Software diagnostics, hard drive recovery, operating system tune-ups, and component replacement.</p>
+                <a href="desktop-laptop-repair.html">View Services &rarr;</a>
+            </div>
+            <div class="service-card">
+                <div class="icon">💻</div>
+                <h4>Tablet Repair</h4>
+                <p>Digitizer replacement, charging port repair, and accessory connection issues.</p>
+                <a href="tablet-repair.html">View Services &rarr;</a>
+            </div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="section" id="advice">
+        <div class="section-content">
+            <h2>Instant AI Repair Advice</h2>
+            <p class="text-secondary">Describe your problem and our AI Guru will suggest the best course of action.</p>
+
+            <div class="chat-container">
+                <div class="messages-container" id="messagesContainer">
+                    <div class="message-bubble message-ai">
+                        Welcome! I am the Tech Re/Pair AI Guru. Tell me about your device issue (e.g., "My iPhone screen is cracked" or "My laptop is running slow").
+                        <span class="message-time">9:00 AM</span>
+                    </div>
+                </div>
+                <form class="chat-input-form" id="adviceForm">
+                    <input type="text" placeholder="Ask your repair question..." required>
+                    <button type="submit" class="btn">Send</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="section-content">
+            <h2>What Our Customers Say</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="rating">★★★★★</div>
+                    <p>"The AI advice was spot on and saved me a trip. When I did need service, it was fast and professional."</p>
+                    <p class="font-bold mt-2">Sarah L.</p>
+                </div>
+                <div class="testimonial-card">
+                    <div class="rating">★★★★★</div>
+                    <p>"Quick turnaround on my laptop repair. I was back up and running in less than 24 hours. Highly recommend!"</p>
+                    <p class="font-bold mt-2">Robert F.</p>
+                </div>
+                <div class="testimonial-card">
+                    <div class="rating">★★★★★</div>
+                    <p>"The pricing table was transparent, and there were no hidden fees. Excellent service for my cracked tablet screen."</p>
+                    <p class="font-bold mt-2">Jacob J.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+      <div class="section-content">
+        <h3>Frequently Asked Questions</h3>
+        <div class="faq-list">
+          <div class="faq-item" data-open="false">
+            <div class="q">What services do you offer? <span>+</span></div>
+            <div class="a">We repair laptops, phones, and tablets with reliable diagnostics and quality spare parts.</div>
+          </div>
+          <div class="faq-item" data-open="false">
+            <div class="q">How does the advice tool work? <span>+</span></div>
+            <div class="a">Describe your device issue and the tool will provide guidance on possible fixes or if professional service is required.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <footer>
+      <div><strong>Tech Re/Pair </strong> © 2025</div>
+      <nav>
+        <a href="#services">Services</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </footer>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
